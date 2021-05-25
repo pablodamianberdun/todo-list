@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
     Modal,
     ModalOverlay,
@@ -12,7 +12,11 @@ import {
     InputRightElement,
 } from "@chakra-ui/react";
 
+import { ItemsContext } from "../context/ItemsContext";
+
 const NewItemModal = ({ isOpen, onClose }) => {
+    const { items, setItems } = useContext(ItemsContext);
+
     const [newItem, setNewItem] = useState({
         name: "",
         status: "uncompleted",
@@ -33,6 +37,7 @@ const NewItemModal = ({ isOpen, onClose }) => {
             return;
         }
         setError(false);
+        setItems([...items, newItem]);
         setNewItem({
             ...newItem,
             name: "",
