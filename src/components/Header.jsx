@@ -1,20 +1,24 @@
 import React, { Fragment } from "react";
-import { Heading, Stack, Button, Flex } from "@chakra-ui/react";
+import { Heading, Stack, Button } from "@chakra-ui/react";
 
 const Header = () => {
     return (
         <Fragment>
             <Heading margin="5">Todo list</Heading>
-				
-            <Stack spacing={4} direction="row" align="center"
-			justify="flex-start">
+
+            <Stack
+                spacing={4}
+                direction="row"
+                align="center"
+                justify="flex-start"
+            >
                 <Button
                     _hover={{
                         background: "grey",
                     }}
-					_focus={{
-						bg: "grey"
-					}}
+                    _focus={{
+                        bg: "grey",
+                    }}
                     variant="outline"
                 >
                     All
@@ -23,9 +27,9 @@ const Header = () => {
                     _hover={{
                         background: "grey",
                     }}
-					_focus={{
-						bg: "grey"
-					}}
+                    _focus={{
+                        bg: "grey",
+                    }}
                     variant="outline"
                 >
                     Completed
@@ -34,9 +38,9 @@ const Header = () => {
                     _hover={{
                         background: "grey",
                     }}
-					_focus={{
-						bg: "grey"
-					}}
+                    _focus={{
+                        bg: "grey",
+                    }}
                     variant="outline"
                 >
                     Uncompleted
