@@ -48,7 +48,7 @@ const NewItemModal = ({ isOpen, onClose }) => {
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-            <ModalContent bgColor="grey">
+            <ModalContent bgColor="gray">
                 <ModalHeader>Add new item</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>

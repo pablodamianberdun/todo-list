@@ -10,8 +10,8 @@ export default extendTheme({
 		}
 	},
     colors: {
-        yellow: "#F5F900",
-        grey: "#646464",
-		black: "#000000"
+        gray: "#3A3A3A",
+		black: "#000000",
+		yellow: "#F5F900",
     },
 });

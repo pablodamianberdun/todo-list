@@ -14,10 +14,10 @@ const Header = () => {
             >
                 <Button
                     _hover={{
-                        background: "grey",
+                        background: "gray",
                     }}
                     _focus={{
-                        bg: "grey",
+                        bg: "gray",
                     }}
                     variant="outline"
                 >
@@ -25,10 +25,10 @@ const Header = () => {
                 </Button>
                 <Button
                     _hover={{
-                        background: "grey",
+                        background: "gray",
                     }}
                     _focus={{
-                        bg: "grey",
+                        bg: "gray",
                     }}
                     variant="outline"
                 >
@@ -36,10 +36,10 @@ const Header = () => {
                 </Button>
                 <Button
                     _hover={{
-                        background: "grey",
+                        background: "gray",
                     }}
                     _focus={{
-                        bg: "grey",
+                        bg: "gray",
                     }}
                     variant="outline"
                 >
