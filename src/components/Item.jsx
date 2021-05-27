@@ -1,24 +1,26 @@
 import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
 import { Text } from "@chakra-ui/layout";
 import { Box, Flex } from "@chakra-ui/layout";
-import React, { useState, useContext } from "react";
-import {ItemsContext} from "../context/ItemsContext"
+import React, { useContext } from "react";
+import { ItemsContext } from "../context/ItemsContext";
 
 const Item = ({ item }) => {
+    const { items, setItems } = useContext(ItemsContext);
 
-	//State to test checkbox behaviour
-    const [checked, setChecked] = useState(false);
-
-	const {items, setItems} = useContext(ItemsContext)
-
-    const handleClick = () => {
-        setChecked(!checked);
+    const updateItem = (id) => {
+        const itemsUpdated = items.map((item) => {
+            if (item.id === id) {
+                item.completed = !item.completed;
+            }
+            return item;
+        });
+        setItems(itemsUpdated);
     };
 
-	const deleteItem = (id) => {
-		const newItems = items.filter( item => item.id !== id )
-		setItems(newItems)
-	}
+    const deleteItem = (id) => {
+        const newItems = items.filter((item) => item.id !== id);
+        setItems(newItems);
+    };
 
     return (
         <Flex
@@ -32,7 +34,7 @@ const Item = ({ item }) => {
         >
             <Flex
                 alignItems="center"
-                onClick={handleClick}
+                onClick={() => updateItem(item.id)}
                 _hover={{
                     cursor: "pointer",
                 }}
@@ -40,12 +42,12 @@ const Item = ({ item }) => {
                 <Box
                     borderRadius="full"
                     border="2px solid"
-                    borderColor={checked ? "yellow" : "white"}
-                    backgroundColor={checked ? "yellow" : "gray"}
+                    borderColor={item.completed ? "yellow" : "white"}
+                    backgroundColor={item.completed ? "yellow" : "gray"}
                     display="block"
                     mr="1rem"
                 >
-                    {checked ? (
+                    {item.completed ? (
                         <Flex
                             height="1.5rem"
                             width="1.5rem"
@@ -59,7 +61,7 @@ const Item = ({ item }) => {
                     )}
                 </Box>
 
-                {checked ? (
+                {item.completed ? (
                     <Text as="del" color="#999999">
                         {item.name}
                     </Text>
@@ -71,7 +73,7 @@ const Item = ({ item }) => {
                 _hover={{
                     cursor: "pointer",
                 }}
-				onClick={() => deleteItem(item.id)}
+                onClick={() => deleteItem(item.id)}
             />
         </Flex>
     );
