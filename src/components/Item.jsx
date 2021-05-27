@@ -1,16 +1,24 @@
 import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
 import { Text } from "@chakra-ui/layout";
 import { Box, Flex } from "@chakra-ui/layout";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import {ItemsContext} from "../context/ItemsContext"
 
 const Item = ({ item }) => {
 
 	//State to test checkbox behaviour
     const [checked, setChecked] = useState(false);
 
+	const {items, setItems} = useContext(ItemsContext)
+
     const handleClick = () => {
         setChecked(!checked);
     };
+
+	const deleteItem = (id) => {
+		const newItems = items.filter( item => item.id !== id )
+		setItems(newItems)
+	}
 
     return (
         <Flex
@@ -63,6 +71,7 @@ const Item = ({ item }) => {
                 _hover={{
                     cursor: "pointer",
                 }}
+				onClick={() => deleteItem(item.id)}
             />
         </Flex>
     );

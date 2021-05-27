@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 
 import { ItemsContext } from "../context/ItemsContext";
+import shortid from "shortid"
 
 const NewItemModal = ({ isOpen, onClose }) => {
     const { items, setItems } = useContext(ItemsContext);
@@ -37,6 +38,7 @@ const NewItemModal = ({ isOpen, onClose }) => {
             return;
         }
         setError(false);
+		newItem.id = shortid.generate()
         setItems([...items, newItem]);
         setNewItem({
             ...newItem,

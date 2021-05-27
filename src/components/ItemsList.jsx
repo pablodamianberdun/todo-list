@@ -8,7 +8,7 @@ const ItemsList = () => {
     return (
         <Fragment>
             {items.map((item) => (
-                <Item item={item} />
+                <Item key={item.id} item={item} />
             ))}
         </Fragment>
     );
