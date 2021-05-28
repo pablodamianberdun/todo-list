@@ -32,7 +32,8 @@ const NewItemModal = ({ isOpen, onClose }) => {
         });
     };
 
-    const handleClick = (e) => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
         if (newItem.name.trim() === "") {
             setError(true);
             return;
@@ -54,24 +55,26 @@ const NewItemModal = ({ isOpen, onClose }) => {
                 <ModalHeader>Add new item</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
-                    <InputGroup>
-                        <Input
-                            placeholder="Cook, Clean, Study..."
-                            onChange={handleChange}
-                            isInvalid={error}
-                            value={newItem.name}
-                        />
-                        <InputRightElement width="4.5rem">
-                            <Button
-                                h="1.75rem"
-                                size="sm"
-                                colorScheme="blackAlpha"
-                                onClick={handleClick}
-                            >
-                                Add
-                            </Button>
-                        </InputRightElement>
-                    </InputGroup>
+                    <form onSubmit={handleSubmit}>
+                        <InputGroup>
+                            <Input
+                                placeholder="Cook, Study, Wash the car..."
+                                onChange={handleChange}
+                                isInvalid={error}
+                                value={newItem.name}
+                            />
+                            <InputRightElement width="4.5rem">
+                                <Button
+                                    h="1.75rem"
+                                    size="sm"
+                                    colorScheme="blackAlpha"
+                                    type="submit"
+                                >
+                                    Add
+                                </Button>
+                            </InputRightElement>
+                        </InputGroup>
+                    </form>
                 </ModalBody>
             </ModalContent>
         </Modal>
