@@ -2,7 +2,11 @@ import React, { createContext, useState, useEffect } from "react";
 
 export const ItemsContext = createContext();
 
-const getItemsLS = () => JSON.parse(localStorage.getItem("items"));
+const getItemsLS = () => {
+	const items = JSON.parse(localStorage.getItem("items"));
+	if (!items) return []
+	else return items
+}
 
 const ItemsProvider = (props) => {
     const [items, setItems] = useState(getItemsLS);
