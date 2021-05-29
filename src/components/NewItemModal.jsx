@@ -20,7 +20,7 @@ const NewItemModal = ({ isOpen, onClose }) => {
 
     const [newItem, setNewItem] = useState({
         name: "",
-        completed: false,
+        status: "uncompleted",
     });
 
     const [error, setError] = useState(false);

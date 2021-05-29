@@ -10,7 +10,11 @@ const Item = ({ item }) => {
     const updateItem = (id) => {
         const itemsUpdated = items.map((item) => {
             if (item.id === id) {
-                item.completed = !item.completed;
+                if (item.status === "completed") {
+                    item.status = "uncompleted";
+                } else {
+                    item.status = "completed";
+                }
             }
             return item;
         });
@@ -42,12 +46,16 @@ const Item = ({ item }) => {
                 <Box
                     borderRadius="full"
                     border="2px solid"
-                    borderColor={item.completed ? "yellow" : "white"}
-                    backgroundColor={item.completed ? "yellow" : "gray"}
+                    borderColor={
+                        item.status === "completed" ? "yellow" : "white"
+                    }
+                    backgroundColor={
+                        item.status === "completed" ? "yellow" : "gray"
+                    }
                     display="block"
                     mr="1rem"
                 >
-                    {item.completed ? (
+                    {item.status === "completed" ? (
                         <Flex
                             height="1.5rem"
                             width="1.5rem"
@@ -61,7 +69,7 @@ const Item = ({ item }) => {
                     )}
                 </Box>
 
-                {item.completed ? (
+                {item.status === "completed" ? (
                     <Text as="del" color="#999999">
                         {item.name}
                     </Text>
