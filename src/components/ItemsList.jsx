@@ -2,6 +2,7 @@ import React, { Fragment, useContext, useEffect, useState } from "react";
 import { ItemsContext } from "../context/ItemsContext";
 import Item from "./Item";
 import FiltersTabs from "./FiltersTabs";
+import { Text } from "@chakra-ui/react";
 
 const ItemsList = () => {
     const { items } = useContext(ItemsContext);
@@ -25,9 +26,11 @@ const ItemsList = () => {
     return (
         <Fragment>
             <FiltersTabs setFilter={setFilter} />
-            {itemsFiltered.map((item) => (
-                <Item key={item.id} item={item} />
-            ))}
+            {itemsFiltered.length > 0 ? (
+                itemsFiltered.map((item) => <Item key={item.id} item={item} />)
+            ) : (
+                <Text mt={6}>Nothing found!</Text>
+            )}
         </Fragment>
     );
 };
